@@ -6,19 +6,11 @@
 body {
   background: linear-gradient(180deg, #1d2734 0%, #404a5d 100%);
   min-height: 100vh;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
 }
 
-.login-container,
-.signup-container {
-  max-width: 450px;
-  width: 100%;
-  padding: 20px;
-}
-
-.login-header,
 .signup-header {
   background: linear-gradient(
     135deg,
@@ -26,41 +18,39 @@ body {
     var(--secondary-color) 100%
   );
   color: white;
-  padding: 40px 30px;
+  padding: 15% 30px;
   text-align: center;
+  width: 35%;
 }
 
-.login-body,
 .signup-body {
-  padding: 40px 30px;
+  padding: 40px 15%;
+  width: 75%;
 }
 
-.login-card,
 .signup-card {
+  width: 100%;
   background: white;
-  border-radius: 20px;
+  border-radius: 0px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
-
-.btn-login {
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--secondary-color)
-  );
+/* 
+.btn-signup {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
   border: none;
   color: white;
+  border-radius: 12px;
   padding: 12px;
   font-weight: bold;
-  transition: transform 0.2s ease;
-}
+  transition: all 0.3s ease; /* ホバー時の少しの動きをなめらかにする 
+} */
 
-.btn-login:hover {
+/* .btn-signup:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
-  color: white !important;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
 }
+*/
 
 .social-btn {
   border: 2px solid #e5e7eb;

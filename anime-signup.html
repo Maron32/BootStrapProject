@@ -65,6 +65,21 @@
             transition: all 0.3s ease;
         }
 
+        .btn-signup {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            border: none;
+            color: white;
+            border-radius: 12px;
+            padding: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease; /* ホバー時の少しの動きをなめらかにする */
+        }
+
+        .btn-signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+        }
+
         .btn-social:hover {
             background: #f9fafb;
             transform: translateY(-2px);
@@ -103,6 +118,7 @@
             right: 20px;
             z-index: 9999;
         }
+
     </style>
 </head>
 
@@ -117,31 +133,32 @@
         <a href="index.html" class="d-md-none back-link text-white text-decoration-none position-static mb-3">
             <i class="bi bi-arrow-left-circle"></i> ホームに戻る
         </a>
-        <div class="signup-card mt-3 mt-md-0">
+        <div class="signup-card mt-3 mt-md-0 d-flex ">
             <div class="signup-header">
                 <i class="bi bi-film display-3 mb-3"></i>
-                <h2 class="fw-bold mb-2">AnimeHub へようこそ</h2>
-                <p class="mb-0">新しいアカウントを作成</p>
+                <h2 class="fw-bold mt-4">AnimeHubへ ようこそ</h2>
+                <p class="text-center mt-4">自分だけのお気に入り作品を探そう！</p>
             </div>
 
-            <div class="signup-body">
+            <div class="signup-body ">
+                <h4 class="text-center m-5 fw-bold">新しいアカウントを作成</h4>
                 <form id="signupForm">
                     <!-- ユーザー名 -->
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="username" class="form-label">ユーザー名 <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="username" placeholder="yamada_taro" required>
                         <small class="text-danger d-none" id="usernameError">ユーザー名は4文字以上である必要があります</small>
                     </div>
 
                     <!-- メールアドレス -->
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="email" class="form-label">メールアドレス <span class="text-danger">*</span></label>
                         <input type="email" class="form-control" id="email" placeholder="example@email.com" required>
                         <small class="text-danger d-none" id="emailError">有効なメールアドレスを入力してください</small>
                     </div>
 
                     <!-- パスワード -->
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="password" class="form-label">パスワード <span class="text-danger">*</span></label>
                         <input type="password" class="form-control" id="password" required>
                         <small class="text-danger d-none" id="passwordError">パスワードは8文字以上必要です</small>
@@ -152,7 +169,7 @@
                     </div>
 
                     <!-- パスワード確認 -->
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="confirmPassword" class="form-label">パスワード確認 <span
                                 class="text-danger">*</span></label>
                         <input type="password" class="form-control" id="confirmPassword" required>
@@ -160,14 +177,14 @@
                     </div>
 
                     <!-- 生年月日 -->
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="birthdate" class="form-label">生年月日 <span class="text-danger">*</span></label>
                         <input type="date" class="form-control" id="birthdate" required>
                         <small class="text-danger d-none" id="birthdateError">13歳以上である必要があります</small>
                     </div>
 
                     <!-- 利用規約 -->
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <input type="checkbox" id="agreeTerms" required>
                         <label for="agreeTerms">利用規約に同意します</label>
                         <small class="text-danger d-none" id="termsError">利用規約に同意してください</small>
