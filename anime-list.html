@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>作品一覧 - AniListo</title>
+    <title>夢がかなう場所 - 東京ディズニーリゾート</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,8 +13,43 @@
         href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="base.css">
-    <link rel="icon" href="favicon.png">
+    <link rel="icon" href="images/icon_tdr.svg">
     <style>
+        .anime-card img {
+            width: 100%;
+            height: 30vw;
+            max-height: 300px;
+            object-fit: cover;
+        }
+
+        .ranking-card {
+            transition: transform 0.2s ease;
+        }
+
+        .ranking-card img {
+            width: auto;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .ranking-card:hover {
+            transform: scale(1.02);
+        }
+
+        .ranking-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            opacity: 0.2;
+        }
+
+        @media (max-width: 767.98px) {
+            .anime-card img {
+                object-position: 50% 40%;
+            }
+        }
         .filter-card {
             position: sticky;
             top: 20px;
@@ -41,10 +76,10 @@
 
 <body>
     <!-- ナビゲーションバー -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">
-                <i class="bi bi-film"></i> AniListo
+                <i class="bi bi-stars"></i> 東京ディズニーリゾート
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -52,16 +87,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">ホーム</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">作品一覧</a>
+                        <a class="nav-link " href="index.html">ホーム</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="anime-ranking.html">ランキング</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="anime-mylist.html">マイリスト</a>
+                        <a class="nav-link active" href="anime-list.html">アトラクション</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="anime-mylist.html">ショー・パレード</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="anime-community.html">コミュニティ</a>
@@ -79,12 +114,12 @@
     <!-- ページヘッダー -->
     <div class="page-heading">
         <div class="container">
-            <h1 class="display-4 fw-bold mb-3">アニメ作品一覧</h1>
-            <p class="lead">10,000以上の作品からお気に入りを見つけよう</p>
+            <h1 class="display-4 fw-bold mb-3">アトラクション</h1>
+            <p class="lead">自分の好きなアトラクションを見つけよう</p>
             <div class="row mt-4">
                 <div class="col-md-8">
                     <div class="input-group input-group-lg">
-                        <input type="text" class="form-control" placeholder="作品名、キャラクター名で検索...">
+                        <input type="text" class="form-control" placeholder="アトラクション名で検索...">
                         <button class="btn btn-light" type="button">
                             <i class="bi bi-search"></i> 検索
                         </button>
@@ -105,46 +140,46 @@
                     <form>
                         <!-- ジャンル -->
                         <div class="filter-section">
-                            <h6 class="fw-bold mb-3">ジャンル</h6>
+                            <h6 class="fw-bold mb-3">エリア</h6>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="genre1">
+                                <input class="form-check-input" type="radio" id="genre1">
                                 <label class="form-check-label" for="genre1">
-                                    ファンタジー <span class="badge bg-secondary">234</span>
+                                    アドベンチャーワールド 
                                 </label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="genre2">
+                                <input class="form-check-input" type="radio" id="genre2">
                                 <label class="form-check-label" for="genre2">
-                                    恋愛 <span class="badge bg-secondary">189</span>
+                                    ウエスタンランド 
                                 </label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="genre3">
+                                <input class="form-check-input" type="radio" id="genre3">
                                 <label class="form-check-label" for="genre3">
-                                    アクション <span class="badge bg-secondary">312</span>
+                                    クリッターカントリー 
                                 </label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="genre4">
+                                <input class="form-check-input" type="radio" id="genre4">
                                 <label class="form-check-label" for="genre4">
-                                    SF <span class="badge bg-secondary">156</span>
+                                    ファンタジーランド 
                                 </label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="genre5">
+                                <input class="form-check-input" type="radio" id="genre5">
                                 <label class="form-check-label" for="genre5">
-                                    コメディ <span class="badge bg-secondary">201</span>
+                                    トゥータウン 
                                 </label>
                             </div>
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" id="genre6">
+                                <input class="form-check-input" type="radio" id="genre6">
                                 <label class="form-check-label" for="genre6">
-                                    ホラー <span class="badge bg-secondary">89</span>
+                                    トゥモローランド 
                                 </label>
                             </div>
                         </div>
 
-                        <!-- 放送時期 -->
+                        <!-- 放送時期
                         <div class="filter-section">
                             <h6 class="fw-bold mb-3">放送時期</h6>
                             <div class="form-check mb-2">
@@ -177,32 +212,53 @@
                                     すべて
                                 </label>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- 放送状況 -->
                         <div class="filter-section">
-                            <h6 class="fw-bold mb-3">放送状況</h6>
+                            <h6 class="fw-bold mb-3">施設の特徴・サービス</h6>
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" id="status1">
                                 <label class="form-check-label" for="status1">
-                                    放送中 <span class="badge bg-success">78</span>
+                                    ディズニー・プレミアアクセス対象 <span class="badge bg-primary">有料</span>
                                 </label>
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" id="status2">
                                 <label class="form-check-label" for="status2">
-                                    完結 <span class="badge bg-secondary">456</span>
+                                    40周年記念プライオリティパス対象 <span class="badge bg-success">無料</span>
                                 </label>
                             </div>
                             <div class="form-check mb-2">
                                 <input class="form-check-input" type="checkbox" id="status3">
                                 <label class="form-check-label" for="status3">
-                                    放送予定 <span class="badge bg-info">23</span>
+                                    エントリー受付対象 <span class="badge bg-secondary">抽選</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="filter-section">
+                            <h6 class="fw-bold mb-3">こだわり条件</h6>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="style1">
+                                <label class="form-check-label" for="style1">
+                                    キャラクターが登場する <span class="badge bg-danger">人気</span>
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="style2">
+                                <label class="form-check-label" for="style2">
+                                    雨の日も安心（屋内）
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="style3">
+                                <label class="form-check-label" for="style3">
+                                    大きな音がしない / 暗闇を通らない
                                 </label>
                             </div>
                         </div>
 
-                        <!-- 評価 -->
+                        <!-- 評価
                         <div class="filter-section">
                             <h6 class="fw-bold mb-3">評価</h6>
                             <div class="form-check mb-2">
@@ -241,25 +297,22 @@
                                     </span> 以上
                                 </label>
                             </div>
-                        </div>
+                        </div> -->
 
                         <button type="reset" class="btn btn-outline-danger w-100 mb-2">
                             <i class="bi bi-x-circle"></i> フィルターをクリア
                         </button>
                 </div>
             </div>
-            </form>
 
             <!-- 作品一覧 -->
             <div class="col-lg-9 mt-5 mt-lg-0">
-                <!-- ツールバー -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div id="cases" class="d-none d-sm-block">
                         <h5 class="mb-0">検索結果: <span class="fw-bold">234件</span></h5>
                     </div>
                     <div class="btn-group ms-auto" role="group">
-                        <button type="button" class="btn btn-outline-dark sort-btn active" data-sort="popular"
-                            title="人気順">
+                        <button type="button" class="btn btn-outline-dark sort-btn active" data-sort="popular" title="人気順">
                             <i class="bi bi-sort-down"></i> <span class="d-none d-sm-inline">人気順</span>
                         </button>
                         <button type="button" class="btn btn-outline-dark sort-btn" data-sort="rating" title="評価順">
@@ -271,257 +324,261 @@
                     </div>
                 </div>
 
-                <!-- 作品カード -->
-                <div class="row g-4 mb-4" id="contentDisplay">
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card position-relative">
-                            <img src="images/異世界の勇者 ～運命の旅路～.webp" class="card-img-top" alt="異世界の勇者">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-primary">ファンタジー</span>
-                                    <span class="badge bg-success">放送中</span>
+                <div class="row g-4 mb-4" id="contentDisplay">              
+                    <div class="col-12">
+                        <div class="card anime-card position-relative overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="images/Beauty_Beast.jpg" class="img-fluid h-100 w-100" alt="美女と野獣" style="object-fit: cover; min-height: 200px;">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">異世界の勇者 ～運命の旅路～</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    異世界に勇者として召喚された高校生・佐藤翔太が、仲間との絆を力に魔王軍や陰謀へ挑む。成長と感動が交錯する、胸躍る王道ファンタジー冒険譚。</p>
-                                <a href="anime-detail.html" class="stretched-link"></a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1">4.5</span>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="d-flex gap-2 mb-2">
+                                            <span class="badge bg-primary">ファンタジー</span>
+                                            <span class="badge bg-success">TDL</span>
+                                        </div>
+                                        <h5 class="card-title fw-bold">美女と野獣“魔法のものがたり”</h5>
+                                        <p class="card-text text-muted small">魔法のカップに乗り込み、ディズニー映画『美女と野獣』のストーリーをめぐる旅へ。名曲に合わせて踊るように動くライドで、真実の愛の物語を体験できます。</p>
+                                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                                            <div class="rating-stars small">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                                                <span class="text-dark ms-1">4.9</span>
+                                            </div>
+                                            <small class="text-muted">5,120件</small>
+                                        </div>
+                                        <a href="attraction-detail.html" class="stretched-link"></a>
                                     </div>
-                                    <small class="text-muted">1,234件</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/桜色の約束.webp" class="card-img-top" alt="桜色の約束">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-danger">恋愛</span>
-                                    <span class="badge bg-success">放送中</span>
+                    <div class="col-12">
+                        <div class="card anime-card position-relative overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="images/Soaring.jpg" class="img-fluid h-100 w-100" alt="ソアリン" style="object-fit: cover; min-height: 200px;">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">桜色の約束</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    高校最後の春。幼馴染との小さな“約束”を胸に、揺れる想いと未来への一歩を描く、切なくも温かい青春ラブストーリー。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1">4.8</span>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="d-flex gap-2 mb-2">
+                                            <span class="badge bg-danger">空の旅</span>
+                                            <span class="badge bg-success">TDS</span>
+                                        </div>
+                                        <h5 class="card-title fw-bold">ソアリン：ファンタスティック・フライト</h5>
+                                        <p class="card-text text-muted small">ドリームフライヤーに乗り込み、世界中の名所や大自然をめぐる壮大な空の旅へ。風や匂いを感じながら、圧倒的な没入感で飛行体験を楽しめます。</p>
+                                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                                            <div class="rating-stars small">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                                                <span class="text-dark ms-1">4.9</span>
+                                            </div>
+                                            <small class="text-muted">4,420件</small>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">2,156件</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/量子戦士クロノス.webp" class="card-img-top" alt="量子戦士">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-info">SF</span>
-                                    <span class="badge bg-success">放送中</span>
+                    <div class="col-12">
+                        <div class="card anime-card position-relative overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="images/Sprush_mountain.jpg" class="img-fluid h-100 w-100" alt="スプラッシュ・マウンテン" style="object-fit: cover; min-height: 200px;">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">量子戦士クロノス</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    時空のゆがみに巻き込まれた少年が“量子戦士”として覚醒。過去と未来を駆け巡り、崩壊する世界を救うため仲間と共に戦い抜く、スケール壮大なSFアクション。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-dark ms-1">4.2</span>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="d-flex gap-2 mb-2">
+                                            <span class="badge bg-info">スリル</span>
+                                            <span class="badge bg-success">TDL</span>
+                                        </div>
+                                        <h5 class="card-title fw-bold">スプラッシュ・マウンテン</h5>
+                                        <p class="card-text text-muted small">丸太ボートに乗って愉快な冒険へ出発。最後には落差16mの滝つぼにダイブ！笑いあり、スリルありのディズニー映画『南部の唄』の世界を楽しめます。</p>
+                                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                                            <div class="rating-stars small">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                                                <span class="text-dark ms-1">4.5</span>
+                                            </div>
+                                            <small class="text-muted">3,840件</small>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">987件</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/魔法学園の日常.webp" class="card-img-top" alt="魔法学園">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-primary">ファンタジー</span>
-                                    <span class="badge bg-success">放送中</span>
+                    <div class="col-12">
+                        <div class="card anime-card position-relative overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="images/Toy_Story.jpg" class="img-fluid h-100 w-100" alt="トイ・ストーリー・マニア" style="object-fit: cover; min-height: 200px;">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">魔法学園の日常</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    魔法学園に通う個性豊かな生徒たちが、授業や試験、友情や恋に揺れながら日々成長していく。笑いとときめきがあふれる、魔法世界の青春ファンタジー。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1">4.6</span>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="d-flex gap-2 mb-2">
+                                            <span class="badge bg-primary">ゲーム</span>
+                                            <span class="badge bg-success">TDS</span>
+                                        </div>
+                                        <h5 class="card-title fw-bold">トイ・ストーリー・マニア！</h5>
+                                        <p class="card-text text-muted small">ウッディが広げた大きな口から中へ進むと、そこはおもちゃの世界。3Dメガネをかけて、トラムに乗りながらタマゴ投げなどのゲームに挑戦しましょう。</p>
+                                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                                            <div class="rating-stars small">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                                                <span class="text-dark ms-1">4.7</span>
+                                            </div>
+                                            <small class="text-muted">4,210件</small>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">2,345件</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/竜騎士の伝説.webp" class="card-img-top" alt="竜騎士">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-primary">ファンタジー</span>
-                                    <span class="badge bg-warning text-dark">人気</span>
+                    <div class="col-12">
+                        <div class="card anime-card position-relative overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="images/Tower_of_Terrer.jpg" class="img-fluid h-100 w-100" alt="タワー・オブ・テラー" style="object-fit: cover; min-height: 200px;">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">竜騎士の伝説</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    竜と契約した若き騎士が、仲間と共に迫りくる脅威と古代の謎に立ち向かう。絆と勇気が導く、壮大な冒険と伝説が紡がれるファンタジー物語。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1">4.7</span>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="d-flex gap-2 mb-2">
+                                            <span class="badge bg-primary">ホラー</span>
+                                            <span class="badge bg-warning text-dark">絶叫</span>
+                                        </div>
+                                        <h5 class="card-title fw-bold">タワー・オブ・テラー</h5>
+                                        <p class="card-text text-muted small">時は1912年のニューヨーク。呪われたホテル「タワー・オブ・テラー」を舞台に、エレベーターで最上階へ。恐怖の急降下体験があなたを待ち受けています。</p>
+                                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                                            <div class="rating-stars small">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                                                <span class="text-dark ms-1">4.8</span>
+                                            </div>
+                                            <small class="text-muted">4,560件</small>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">2,890件</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/都市伝説探偵.webp" class="card-img-top" alt="都市伝説">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-dark">ホラー</span>
-                                    <span class="badge bg-success">放送中</span>
+                    <div class="col-12">
+                        <div class="card anime-card position-relative overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="images/honted_mansyon.jpg" class="img-fluid h-100 w-100" alt="ホーンテッドマンション" style="object-fit: cover; min-height: 200px;">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">都市伝説探偵</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    現代の学園で囁かれる“都市伝説”が次々と現実化。謎を追う探偵部の生徒たちが、恐怖と真相に迫っていく。怪異と推理が交錯する学園ホラーミステリー。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-dark ms-1">4.3</span>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="d-flex gap-2 mb-2">
+                                            <span class="badge bg-dark">ホラー</span>
+                                            <span class="badge bg-success">TDL</span>
+                                        </div>
+                                        <h5 class="card-title fw-bold">ホーンテッドマンション</h5>
+                                        <p class="card-text text-muted small">999人の亡霊が住む不気味な洋館。彼らは1000人目の仲間を迎え入れようとあなたを待っています。ドゥームバギーに乗ってミステリアスな体験を。</p>
+                                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                                            <div class="rating-stars small">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                                                <span class="text-dark ms-1">4.3</span>
+                                            </div>
+                                            <small class="text-muted">2,980件</small>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">1,567件</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/近未来探偵ネオ.webp" class="card-img-top" alt="未来探偵">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-info">SF</span>
-                                    <span class="badge bg-success">放送中</span>
+                    <div class="col-12">
+                        <div class="card anime-card position-relative overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="images/star_tuaras.jpg" class="img-fluid h-100 w-100" alt="スター・ツアーズ" style="object-fit: cover; min-height: 200px;">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">未来探偵ネオ</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    近未来都市を舞台に、若き探偵ネオが最新テクノロジーと鋭い推理力で複雑な事件に挑む。陰謀が渦巻く世界で真実を追い続ける、スタイリッシュなSFミステリーアクション。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-dark ms-1">4.4</span>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="d-flex gap-2 mb-2">
+                                            <span class="badge bg-info">SF</span>
+                                            <span class="badge bg-success">TDL</span>
+                                        </div>
+                                        <h5 class="card-title fw-bold">スター・ツアーズ</h5>
+                                        <p class="card-text text-muted small">3D映像で楽しむ『スター・ウォーズ』の世界。スタースピーダー1000に乗り込み、予測不能でスリル満点な宇宙旅行へと飛び立ちましょう。</p>
+                                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                                            <div class="rating-stars small">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                                                <span class="text-dark ms-1">4.2</span>
+                                            </div>
+                                            <small class="text-muted">1,850件</small>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">1,987件</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/音楽少女のメロディ.webp" class="card-img-top" alt="音楽少女">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge bg-danger">恋愛</span>
-                                    <span class="badge bg-secondary">完結</span>
+                    <div class="col-12">
+                        <div class="card anime-card position-relative overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="images/indy_jouns.jpg" class="img-fluid h-100 w-100" alt="インディ・ジョーンズ" style="object-fit: cover; min-height: 200px;">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">音楽少女のメロディ</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    音楽に情熱を注ぐ少女たちが、友情や恋、夢に揺れながら成長していく姿を描く。笑顔と涙、感動が溢れる青春音楽ストーリー。
-
-                                </p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1">4.5</span>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="d-flex gap-2 mb-2">
+                                            <span class="badge bg-danger">冒険</span>
+                                            <span class="badge bg-secondary">TDS</span>
+                                        </div>
+                                        <h5 class="card-title fw-bold">インディ・ジョーンズ®・アドベンチャー</h5>
+                                        <p class="card-text text-muted small">クリスタルスカルの魔宮をジープで駆け抜ける。待ち受ける罠や守護神の怒りをかいくぐり、絶体絶命のピンチを乗り越えるスリリングな冒険へ。</p>
+                                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                                            <div class="rating-stars small">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                                                <span class="text-dark ms-1">4.6</span>
+                                            </div>
+                                            <small class="text-muted">3,120件</small>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">3,245件</small>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card anime-card">
-                            <img src="images/料理バトル王.webp" class="card-img-top" alt="料理バトル">
-                            <div class="card-body">
-                                <div class="d-flex gap-2 mb-2">
-                                    <span class="badge" style="background-color: #f97316;">グルメ</span>
-                                    <span class="badge bg-success">放送中</span>
+                    <div class="col-12">
+                        <div class="card anime-card position-relative overflow-hidden">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="images/Big_sunder.jpg" class="img-fluid h-100 w-100" alt="ビッグサンダー・マウンテン" style="object-fit: cover; min-height: 200px;">
                                 </div>
-                                <h5 class="card-title fw-bold card-title-nowrap">料理バトル王</h5>
-                                <p class="card-text text-muted small text-clamp-3">
-                                    情熱と技をぶつけ、究極の一皿を目指す少年たちの熱血料理バトル。友情やライバルとの絆を胸に、最強の料理人への道を駆け抜けるグルメアクション。</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="rating-stars small">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-dark ms-1">4.1</span>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <div class="d-flex gap-2 mb-2">
+                                            <span class="badge" style="background-color: #f97316;">スリル</span>
+                                            <span class="badge bg-success">TDL</span>
+                                        </div>
+                                        <h5 class="card-title fw-bold">ビッグサンダー・マウンテン</h5>
+                                        <p class="card-text text-muted small">ゴールドラッシュが過ぎ去った無人の鉱山を、鉱山列車が猛スピードで駆け抜けます。岩肌をかすめるようなスリルと疾走感が楽しめます。</p>
+                                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                                            <div class="rating-stars small">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+                                                <span class="text-dark ms-1">4.4</span>
+                                            </div>
+                                            <small class="text-muted">2,950件</small>
+                                        </div>
                                     </div>
-                                    <small class="text-muted">876件</small>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
-                <!-- 準備中 -->
+
                 <div id="contentPreparing" class="mb-4 d-none">
                     <h4 id="preparingMessage" class="text-center py-5"></h4>
                 </div>
 
-                <!-- ページネーション -->
                 <nav aria-label="ページネーション" id="pagination">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">
-                                <i class="bi bi-chevron-left"></i> 前へ
-                            </a>
+                            <a class="page-link" href="#" tabindex="-1"><i class="bi bi-chevron-left"></i> 前へ</a>
                         </li>
                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -530,11 +587,7 @@
                         <li class="page-item"><a class="page-link" href="#">5</a></li>
                         <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
                         <li class="page-item"><a class="page-link" href="#">26</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">
-                                次へ <i class="bi bi-chevron-right"></i>
-                            </a>
-                        </li>
+                        <li class="page-item"><a class="page-link" href="#">次へ <i class="bi bi-chevron-right"></i></a></li>
                     </ul>
                 </nav>
             </div>
@@ -546,8 +599,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-film"></i> AniListo</h5>
-                    <p class="text-light">あなたの好きなアニメを見つけて、共有しよう。</p>
+                    <h5 class="fw-bold mb-3"><i class="bi bi-stars"></i> 夢がかなう場所</h5>
+                    <p class="text-light">東京ディズニーリゾート</p>
                 </div>
                 <div class="col-md-2 mb-3">
                     <h6 class="fw-bold mb-3">サイト情報</h6>
@@ -576,7 +629,7 @@
                 </div>
             </div>
             <hr class="border-light">
-            <p class="text-center text-light mb-0">&copy; 2025 AniListo. All rights reserved.</p>
+            <p class="text-center text-light mb-0">&copy; 2025 TokyoDisneyResort. All rights reserved.</p>
         </div>
     </footer>
     <button id="backToTopBtn" class="btn shadow d-flex align-items-center justify-content-center">

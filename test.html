@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Resort Guide - 夢と魔法の世界へ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* --- 東京ディズニーリゾート風テーマ設定 --- */
+        :root {
+            --tdr-blue: #1a3c7a; /* 深い夜空の青 */
+            --tdr-blue-light: #3a6cc7;
+            --tdr-gold: #cfa144; /* シックなゴールド */
+            --tdr-gold-bright: #f3d688; /* 明るいゴールド */
+            --tdr-red: #e32934; /* ミッキーレッド */
+            --tdr-white: #ffffff;
+            --tdr-bg-cream: #f9f7f4; /* 優しいクリーム色の背景 */
+            --tdr-text-dark: #333333;
+            --primary-color: var(--tdr-blue); /* 既存の変数も上書き */
+        }
+
+        body {
+            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+            background-color: var(--tdr-bg-cream);
+            color: var(--tdr-text-dark);
+            /* うっすらと魔法の粉のような背景パターンを入れる想定（今回は単色） */
+        }
+
+        /* 共通の装飾 */
+        .section-title {
+            color: var(--tdr-blue);
+            text-shadow: 1px 1px 2px rgba(207, 161, 68, 0.3);
+        }
+        .section-title i {
+            color: var(--tdr-gold);
+            margin-right: 8px;
+        }
+
+        /* ボタンのスタイル上書き */
+        .btn-primary, .bg-primary {
+            background-color: var(--tdr-blue) !important;
+            border-color: var(--tdr-blue) !important;
+        }
+        .btn-primary:hover {
+            background-color: var(--tdr-blue-light) !important;
+            border-color: var(--tdr-blue-light) !important;
+        }
+        .btn-outline-dark {
+            color: var(--tdr-blue);
+            border-color: var(--tdr-blue);
+        }
+        .btn-outline-dark:hover {
+            background-color: var(--tdr-blue);
+            color: var(--tdr-white);
+        }
+        .btn-light {
+            background-color: var(--tdr-white);
+            color: var(--tdr-blue);
+            border: 1px solid var(--tdr-gold-bright);
+        }
+        .btn-light:hover {
+            background-color: var(--tdr-bg-cream);
+            color: var(--tdr-blue-light);
+        }
+
+        /* --- ナビゲーションバー --- */
+        .navbar {
+            background-color: var(--tdr-blue) !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--tdr-gold);
+        }
+        .navbar-brand {
+            font-weight: 800;
+            color: var(--tdr-gold-bright) !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .navbar-brand i {
+            color: var(--tdr-gold-bright);
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.8) !important;
+            transition: color 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--tdr-gold-bright) !important;
+        }
+
+        /* --- ヒーローセクション --- */
+        .hero-section {
+            /* パークの夜景をイメージしたグラデーション */
+            background: linear-gradient(135deg, var(--tdr-blue) 0%, #0d2552 100%);
+            color: var(--tdr-white);
+            padding: 80px 0 100px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--tdr-gold);
+        }
+        /* 魔法のキラキラを擬似要素で表現 */
+        .hero-section::before, .hero-section::after {
+            content: '✦';
+            position: absolute;
+            color: var(--tdr-gold-bright);
+            opacity: 0.3;
+            font-size: 2rem;
+        }
+        .hero-section::before { top: 20%; left: 10%; transform: rotate(15deg); }
+        .hero-section::after { bottom: 30%; right: 15%; transform: rotate(-20deg); font-size: 1.5rem;}
+
+        .hero-section h1 {
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero-section .lead {
+            color: rgba(255,255,255,0.9);
+        }
+        .hero-section .form-control {
+            border-radius: 30px 0 0 30px;
+            border: 2px solid var(--tdr-gold-bright);
+            border-right: none;
+        }
+        .hero-section .btn {
+            border-radius: 0 30px 30px 0;
+            border: 2px solid var(--tdr-gold-bright);
+            background-color: var(--tdr-gold-bright);
+            color: var(--tdr-blue);
+            font-weight: bold;
+        }
+        .hero-section .btn:hover {
+            background-color: var(--tdr-gold);
+        }
+
+        /* --- カード（共通）--- */
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(26, 60, 122, 0.15); /* 青っぽい影 */
+            border-color: var(--tdr-gold-bright);
+        }
+
+        /* --- 注目作品カード (.anime-card) --- */
+        .anime-card {
+            border: 2px solid transparent; /* ホバー時の枠線用 */
+        }
+        .anime-card:hover {
+            border-color: var(--tdr-gold-bright);
+        }
+        .anime-card img {
+            width: 100%;
+            height: 30vw;
+            max-height: 250px; /* 高さを少し抑える */
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .anime-card:hover img {
+            transform: scale(1.05);
+        }
+        .anime-card .card-body {
+            padding: 1.5rem;
+        }
+        .anime-card .card-title {
+            color: var(--tdr-blue);
+            font-weight: 700;
+        }
+        /* バッジの色をテーマに合わせる */
+        .badge.bg-primary { background-color: var(--tdr-blue) !important; }
+        .badge.bg-success { background-color: #2da866 !important; } /* 少し落ち着いた緑 */
+        .badge.bg-danger { background-color: var(--tdr-red) !important; }
+        .badge.bg-info { background-color: #4a90e2 !important; color: white !important; } /* 空色 */
+
+        /* 評価スターをゴールドに */
+        .rating-stars i {
+            color: var(--tdr-gold);
+        }
+
+        /* --- ランキングセクション --- */
+        .nav-pills .nav-link {
+            border-radius: 30px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            color: var(--tdr-blue);
+            background-color: var(--tdr-white);
+            border: 2px solid var(--tdr-blue-light);
+            margin: 0 5px;
+        }
+        .nav-pills .nav-link.active {
+            background-color: var(--tdr-blue);
+            color: var(--tdr-gold-bright);
+            border-color: var(--tdr-blue);
+        }
+        
+        .ranking-card {
+            border-left: 4px solid var(--tdr-gold);
+        }
+        .ranking-card img {
+            width: auto;
+            height: 120px; /* 少し小さく調整 */
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px !important;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .ranking-card .ranking-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--tdr-gold);
+            opacity: 1; /* 透明度をなくす */
+            text-shadow: 2px 2px 0px var(--tdr-blue-light);
+            position: relative;
+        }
+        /* ランキング1位〜3位に王冠などをつける装飾例（今回はシンプルに） */
+        .ranking-card .badge.bg-warning {
+            background-color: var(--tdr-gold) !important;
+            color: var(--tdr-white) !important;
+        }
+        .ranking-card .badge.bg-secondary {
+            background-color: #7f8c8d !important; /* 銀色っぽいグレー */
+        }
+
+        /* --- ジャンル別クイックアクセス --- */
+        /* 各ジャンルカードにテーマカラーを割り当て */
+        .border-primary { border-color: var(--tdr-blue-light) !important; }
+        .border-danger { border-color: var(--tdr-red) !important; }
+        .border-warning { border-color: var(--tdr-gold) !important; }
+        .border-info { border-color: #5ac8fa !important; } /* 明るい空色 */
+
+        .text-primary { color: var(--tdr-blue-light) !important; }
+        .text-danger { color: var(--tdr-red) !important; }
+        .text-warning { color: var(--tdr-gold) !important; }
+        .text-info { color: #5ac8fa !important; }
+
+        .card.border-primary:hover { background-color: #f0f4ff; }
+        .card.border-danger:hover { background-color: #fff0f1; }
+        .card.border-warning:hover { background-color: #fffdf0; }
+        .card.border-info:hover { background-color: #f0fbff; }
+
+        /* アイコンをディズニーっぽく変更（Bootstrap Iconsで代用） */
+        .bi-magic::before { content: "\f1e1"; } /* お城 (bi-castle) */
+        .bi-heart-fill::before { content: "\f415"; } /* ハート */
+        .bi-lightning-fill::before { content: "\f52f"; } /* ロケット (bi-rocket-fill) */
+        .bi-rocket-takeoff::before { content: "\f7d1"; } /* 星 (bi-stars) */
+
+
+        /* --- フッター --- */
+        footer {
+            background-color: var(--tdr-blue);
+            color: var(--tdr-white) !important;
+            border-top: 4px solid var(--tdr-gold);
+            margin-top: 4rem;
+        }
+        footer h5, footer h6 {
+            color: var(--tdr-gold-bright);
+            font-weight: 700;
+        }
+        footer a.text-light:hover {
+            color: var(--tdr-gold-bright) !important;
+            text-decoration: underline !important;
+        }
+        footer .bi-film::before {
+             content: "\f1e1"; /* お城アイコンに変更 */
+        }
+
+
+        /* その他のユーティリティ */
+        .text-muted {
+            color: #777 !important;
+        }
+        /* backToTopBtn */
+        #backToTopBtn {
+            background-color: var(--tdr-gold);
+            color: var(--tdr-blue);
+            border: 2px solid var(--tdr-white);
+        }
+        #backToTopBtn:hover {
+            background-color: var(--tdr-gold-bright);
+        }
+
+        @media (max-width: 767.98px) {
+            .anime-card img {
+                object-position: 50% 40%;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-stars"></i> Dream Resort Guide
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">ホーム</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="anime-list.html">作品一覧</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="anime-ranking.html">ランキング</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="anime-mylist.html">マイリスト</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="anime-community.html">コミュニティ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-lg-none" href="anime-login.html">ログイン</a>
+                    </li>
+                </ul>
+                <a href="anime-login.html" class="btn btn-light ms-3 d-none d-lg-block rounded-pill px-4">
+                    <i class="bi bi-person-circle me-1"></i> ログイン</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 mb-4">あなたの好きな世界の扉を開けよう</h1>
+            <p class="lead mb-5">1,000以上の物語から、あなただけの夢と冒険を見つけよう</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="input-group input-group-lg shadow-lg">
+                        <input type="text" class="form-control" placeholder="作品名、キャラクターで検索...">
+                        <button class="btn" type="button">
+                            <i class="bi bi-search"></i> 検索
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 py-4">
+        <section class="mb-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold section-title">
+                    <i class="bi bi-castle"></i> 注目作品
+                </h2>
+                <a href="anime-list.html" class="btn btn-outline-dark rounded-pill px-4">すべて見る <i class="bi bi-arrow-right"></i></a>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card anime-card position-relative h-100">
+                        <img src="images/異世界の勇者 ～運命の旅路～.webp" class="card-img-top img-fluid" alt="異世界の勇者">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-2">
+                                <span class="badge bg-primary me-1">レース</span>
+                                <span class="badge bg-success">アクション</span>
+                            </div>
+                            <h5 class="card-title card-title-nowrap">GRAN TURISUMO7</h5>
+                            <p class="card-text text-muted text-clamp-3 flex-grow-1">競い合うのが好きなレーサーやカジュアルなレーサー、コレクター、チューナー、リバリーデザイナー、フォトグラファーなど、さまざまなプレイヤーが楽しめる豊富なゲームモードを収録。</p>
+                            <a href="anime-detail.html" class="stretched-link"></a>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="rating-stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                    <span class="text-dark ms-1 fw-bold">4.5</span>
+                                </div>
+                                <small class="text-muted">1,234件</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card anime-card h-100">
+                        <img src="images/桜色の約束.webp" class="card-img-top" alt="青春ストーリー">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-2">
+                                <span class="badge bg-danger me-1">アクション</span>
+                                <span class="badge bg-success">オープンワールド</span>
+                            </div>
+                            <h5 class="card-title card-title-nowrap">ELDEN RING</h5>
+                            <p class="card-text text-muted text-clamp-3 flex-grow-1">本作は、本格的なダークファンタジーの世界で、未知と脅威を探索するアクションRPGタイトルです。プレイヤーは「狭間の地」を舞台に、エルデンリングを求める冒険を繰り広げます。</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="rating-stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                    <span class="text-dark ms-1 fw-bold">4.8</span>
+                                </div>
+                                <small class="text-muted">2,156件</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card anime-card h-100">
+                        <img src="images/量子戦士クロノス.webp" class="card-img-top" alt="SFアクション">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-2">
+                                <span class="badge bg-info me-1">SF</span>
+                                <span class="badge bg-success">放送中</span>
+                            </div>
+                            <h5 class="card-title card-title-nowrap">SPIDER-MAN 1</h5>
+                            <p class="card-text text-muted text-clamp-3 flex-grow-1">最新スパイダーマン・アクションとして世界から絶賛された『Marvel's Spider-Man』が、PS5向けに完全リマスター！経験豊富なスパイダーマン、ピーター・パーカーとなって、オープンワールドで描かれるマーベル世界のニューヨークを縦横無尽に駆け巡り、犯罪や巨大な陰謀と戦おう。</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="rating-stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                    <span class="text-dark ms-1 fw-bold">4.2</span>
+                                </div>
+                                <small class="text-muted">987件</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5 pt-4">
+            <div class="container px-0">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold section-title mb-3 mb-md-0">
+                        <i class="bi bi-trophy-fill"></i> 人気ランキング
+                    </h2>
+                    <ul class="nav nav-pills" id="rankingTabTop" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="weeklyTabTop" data-bs-toggle="pill"
+                                data-bs-target="#weeklyTop" type="button" role="tab">
+                                週間
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="monthlyTabTop" data-bs-toggle="pill"
+                                data-bs-target="#monthlyTop" type="button" role="tab">
+                                月間
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="seasonalTabTop" data-bs-toggle="pill"
+                                data-bs-target="#seasonalTop" type="button" role="tab">
+                                年間
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-content" id="rankingTabContent">
+                    <div class="tab-pane fade show active" id="weeklyTop" role="tabpanel">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="card ranking-card h-100">
+                                    <div class="card-body">
+                                        <div class="row align-items-center h-100">
+                                            <div class="col-3 text-center d-flex align-items-center justify-content-center">
+                                                <div class="ranking-number">1</div>
+                                            </div>
+                                            <div class="col-3">
+                                                <img src="images/最強魔法使いの転生.webp" class="img-fluid rounded shadow-sm" alt="1位">
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="badge bg-warning text-dark mb-2">1位</span>
+                                                <h5 class="fw-bold mb-2 card-title-nowrap">最強魔法使いの転生</h5>
+                                                <p class="text-muted small mb-2 text-clamp-2">史上最強の魔法使いが未来へ転生。失われた魔法文明を前に、新たな仲間と共に世界の謎と陰謀へ挑む、爽快で壮大な転生ファンタジーアクション。</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="rating-stars small">
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-half"></i>
+                                                        <span class="text-dark fw-bold">4.9</span>
+                                                    </div>
+                                                    <small class="text-muted">3,456件</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card ranking-card h-100">
+                                    <div class="card-body">
+                                        <div class="row align-items-center h-100">
+                                            <div class="col-3 text-center d-flex align-items-center justify-content-center">
+                                                <div class="ranking-number">2</div>
+                                            </div>
+                                            <div class="col-3">
+                                                <img src="images/竜騎士の伝説.webp" class="img-fluid rounded shadow-sm" alt="2位">
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="badge bg-secondary mb-2">2位</span>
+                                                <h5 class="fw-bold mb-2 card-title-nowrap">竜騎士の伝説</h5>
+                                                <p class="text-muted small mb-2 text-clamp-2">竜と契約した若き騎士が、仲間と共に迫りくる脅威と古代の謎に立ち向かう。絆と勇気が導く、壮大な冒険と伝説が紡がれるファンタジー物語。</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="rating-stars small">
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-half"></i>
+                                                        <span class="text-dark fw-bold">4.7</span>
+                                                    </div>
+                                                    <small class="text-muted">2,890件</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card ranking-card h-100">
+                                    <div class="card-body">
+                                        <div class="row align-items-center h-100">
+                                            <div class="col-3 text-center d-flex align-items-center justify-content-center">
+                                                <div class="ranking-number">3</div>
+                                            </div>
+                                            <div class="col-3">
+                                                <img src="images/魔法学園の日常.webp" class="img-fluid rounded shadow-sm" alt="3位">
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="badge bg-secondary mb-2">3位</span>
+                                                <h5 class="fw-bold mb-2 card-title-nowrap">魔法学園の日常</h5>
+                                                <p class="text-muted small mb-2 text-clamp-2">魔法学園に通う個性豊かな生徒たちが、授業や試験、友情や恋に揺れながら日々成長していく。笑いとときめきがあふれる、魔法世界の青春ファンタジー。</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="rating-stars small">
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-half"></i>
+                                                        <span class="text-dark fw-bold">4.6</span>
+                                                    </div>
+                                                    <small class="text-muted">2,345件</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card ranking-card h-100">
+                                    <div class="card-body">
+                                        <div class="row align-items-center h-100">
+                                            <div class="col-3 text-center d-flex align-items-center justify-content-center">
+                                                <div class="ranking-number">4</div>
+                                            </div>
+                                            <div class="col-3">
+                                                <img src="images/近未来探偵ネオ.webp" class="img-fluid rounded shadow-sm" alt="4位">
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="badge bg-secondary mb-2">4位</span>
+                                                <h5 class="fw-bold mb-2 card-title-nowrap">未来探偵ネオ</h5>
+                                                <p class="text-muted small mb-2 text-clamp-2">近未来都市を舞台に、若き探偵ネオが最新テクノロジーと鋭い推理力で複雑な事件に挑む。陰謀が渦巻く世界で真実を追い続ける、スタイリッシュなSFミステリーアクション。</p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="rating-stars small">
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star-fill"></i>
+                                                        <i class="bi bi-star"></i>
+                                                        <span class="text-dark fw-bold">4.4</span>
+                                                    </div>
+                                                    <small class="text-muted">1,987件</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="monthlyTop" role="tabpanel">
+                        <div class="text-center py-5 card bg-transparent border-0">
+                             <i class="bi bi-stars display-1 text-muted opacity-25 mb-3"></i>
+                            <h4>月間ランキングの内容がここに表示されます</h4>
+                            <p class="text-muted">集計中...</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="seasonalTop" role="tabpanel">
+                        <div class="text-center py-5 card bg-transparent border-0">
+                            <i class="bi bi-stars display-1 text-muted opacity-25 mb-3"></i>
+                            <h4>年間ランキングの内容がここに表示されます</h4>
+                            <p class="text-muted">集計中...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5 pt-4">
+            <h2 class="fw-bold mb-4 section-title">
+                <i class="bi bi-compass"></i> ジャンルから冒険を探す
+            </h2>
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card text-center h-100 border-primary border-2">
+                            <div class="card-body py-4">
+                                <i class="bi bi-magic display-4 text-primary mb-3 d-block"></i>
+                                <h5 class="fw-bold">ファンタジー</h5>
+                                <small class="text-muted">1,234の物語</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card text-center h-100 border-danger border-2">
+                            <div class="card-body py-4">
+                                <i class="bi bi-heart-fill display-4 text-danger mb-3 d-block"></i>
+                                <h5 class="fw-bold">ロマンス</h5>
+                                <small class="text-muted">890の物語</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card text-center h-100 border-warning border-2">
+                            <div class="card-body py-4">
+                                <i class="bi bi-lightning-fill display-4 text-warning mb-3 d-block"></i>
+                                <h5 class="fw-bold">アクション</h5>
+                                <small class="text-muted">1,567の物語</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card text-center h-100 border-info border-2">
+                            <div class="card-body py-4">
+                                <i class="bi bi-rocket-takeoff display-4 text-info mb-3 d-block"></i>
+                                <h5 class="fw-bold">SF・未来</h5>
+                                <small class="text-muted">678の物語</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="py-5">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h5 class="fw-bold mb-3 fs-4"><i class="bi bi-film me-2"></i> Dream Resort Guide</h5>
+                    <p class="text-white-50">あなたの心に残る、魔法のような物語を見つけて、みんなと共有しよう。</p>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h6 class="fw-bold mb-3">サイト情報</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#" class="text-light text-decoration-none">About Us</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">利用規約</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">プライバシーポリシー</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-2">
+                    <h6 class="fw-bold mb-3">サポート</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#" class="text-light text-decoration-none">ヘルプセンター</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">お問い合わせ</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">よくある質問</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="fw-bold mb-3">フォローする</h6>
+                    <div class="d-flex gap-3 mt-2">
+                        <a href="#" class="text-light hover-gold transition"><i class="bi bi-twitter fs-4"></i></a>
+                        <a href="#" class="text-light hover-gold transition"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#" class="text-light hover-gold transition"><i class="bi bi-youtube fs-4"></i></a>
+                        <a href="#" class="text-light hover-gold transition"><i class="bi bi-discord fs-4"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-light opacity-25 my-4">
+            <div class="text-center text-white-50 mb-0 d-flex justify-content-center align-items-center">
+                <small>&copy; 2025 Dream Resort Guide. All rights reserved. <i class="bi bi-stars ms-2 text-warning"></i></small>
+            </div>
+        </div>
+    </footer>
+    <button id="backToTopBtn" class="btn shadow-lg d-flex align-items-center justify-content-center rounded-circle" style="width: 50px; height: 50px; position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+        <i class="bi bi-chevron-up fs-5"></i>
+    </button>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+
+</html>

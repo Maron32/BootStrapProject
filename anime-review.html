@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>レビュー - 異世界の勇者 ～運命の旅路～ - AnimeHub</title>
+    <title>夢がかなう場所 - 東京ディズニーリゾート</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,8 +13,43 @@
         href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="base.css">
-    <link rel="icon" href="favicon.png">
+    <link rel="icon" href="images/icon_tdr.svg">
     <style>
+        .anime-card img {
+            width: 100%;
+            height: 30vw;
+            max-height: 300px;
+            object-fit: cover;
+        }
+
+        .ranking-card {
+            transition: transform 0.2s ease;
+        }
+
+        .ranking-card img {
+            width: auto;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .ranking-card:hover {
+            transform: scale(1.02);
+        }
+
+        .ranking-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            opacity: 0.2;
+        }
+
+        @media (max-width: 767.98px) {
+            .anime-card img {
+                object-position: 50% 40%;
+            }
+        }
         /* .page-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -111,7 +146,7 @@
 
 <body>
     <!-- ナビゲーションバー -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">
                 <i class="bi bi-film"></i> AnimeHub
@@ -122,16 +157,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">ホーム</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="anime-list.html">作品一覧</a>
+                        <a class="nav-link active" href="index.html">ホーム</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="anime-ranking.html">ランキング</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="anime-mylist.html">マイリスト</a>
+                        <a class="nav-link" href="anime-list.html">アトラクション</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="anime-mylist.html">ショー・パレード</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="anime-community.html">コミュニティ</a>
@@ -738,8 +773,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-film"></i> AnimeHub</h5>
-                    <p class="text-light">あなたの好きなアニメを見つけて、共有しよう。</p>
+                    <h5 class="fw-bold mb-3"><i class="bi bi-stars"></i> 夢がかなう場所</h5>
+                    <p class="text-light">東京ディズニーリゾート</p>
                 </div>
                 <div class="col-md-2 mb-3">
                     <h6 class="fw-bold mb-3">サイト情報</h6>
@@ -768,11 +803,9 @@
                 </div>
             </div>
             <hr class="border-light">
-            <p class="text-center text-light mb-0">&copy; 2025 AnimeHub. All rights reserved.</p>
+            <p class="text-center text-light mb-0">&copy; 2025 TokyoDisneyResort. All rights reserved.</p>
         </div>
-    </footer>
-    <button id="backToTopBtn" class="btn shadow d-flex align-items-center justify-content-center">
-        <i class="bi bi-chevron-up"></i>
+    </footer>="bi bi-chevron-up"></i>
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -4,7 +4,7 @@
 }
 
 body {
-  background: linear-gradient(180deg, #1d2734 0%, #404a5d 100%);
+  background: linear-gradient(180deg, #1a3c7a 0%, #3a6cc7 100%);
   min-height: 100vh;
   /* display: flex; */
   align-items: center;
@@ -14,8 +14,7 @@ body {
 .signup-header {
   background: linear-gradient(
     135deg,
-    var(--primary-color) 0%,
-    var(--secondary-color) 100%
+    #1a3c7a 0%, #3a6cc7 100%
   );
   color: white;
   padding: 15% 30px;

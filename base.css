@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #212529;
+  --primary-color: #1a3c7a;
   --viewing-color: var(--bs-primary);
   --completed-color: var(--bs-success);
   --planned-color: var(--bs-warning);
@@ -7,13 +7,17 @@
 }
 
 .navbar {
-  background-color: #1c2432;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #1a3c7a;
+  border-bottom: 1px solid #f3d688;
+}
+
+.border-custom{
+  border-bottom:1px solid #f3d688;
 }
 
 .hero-section,
 .page-heading {
-  background: linear-gradient(180deg, #1d2734 0%, #404a5d 100%);
+  background: linear-gradient(180deg, #1a3c7a 0%, #3a6cc7 80%);
   color: #ffffff;
   padding: 80px 0;
   margin-bottom: 40px;
@@ -105,7 +109,7 @@ h6,
 }
 
 footer {
-  background-color: #1c2432;
+  background-color: #1a3c7a;
   color: white;
   margin-top: 60px;
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ランキング - AniListo</title>
+    <title>夢がかなう場所 - 東京ディズニーリゾート</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,8 +13,44 @@
         href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="base.css">
-    <link rel="icon" href="favicon.png">
+    <link rel="icon" href="images/icon_tdr.svg">
     <style>
+        .anime-card img {
+            width: 100%;
+            height: 30vw;
+            max-height: 300px;
+            object-fit: cover;
+        }
+
+        .ranking-card {
+            transition: transform 0.2s ease;
+        }
+
+        .ranking-card img {
+            width: auto;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .ranking-card:hover {
+            transform: scale(1.02);
+        }
+
+        .ranking-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            opacity: 0.2;
+        }
+
+        @media (max-width: 767.98px) {
+            .anime-card img {
+                object-position: 50% 40%;
+            }
+        }
+
         .ranking-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: none;
@@ -264,10 +300,10 @@
 
 <body>
     <!-- ナビゲーションバー -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="index.html">
-                <i class="bi bi-film"></i> AniListo
+                <i class="bi bi-stars"></i> 東京ディズニーリゾート
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -275,16 +311,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">ホーム</a>
+                        <a class="nav-link " href="index.html">ホーム</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="anime-list.html">作品一覧</a>
+                        <a class="nav-link active" href="anime-ranking.html">ランキング</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">ランキング</a>
+                        <a class="nav-link" href="anime-list.html">アトラクション</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="anime-mylist.html">マイリスト</a>
+                        <a class="nav-link" href="anime-mylist.html">ショー・パレード</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="anime-community.html">コミュニティ</a>
@@ -303,75 +339,67 @@
     <div class="page-heading">
         <div class="container">
             <h1 class="display-4 fw-bold mb-3">
-                <i class="bi bi-trophy-fill"></i> ランキング
+                <i class="bi bi-magic"></i> アトラクション
             </h1>
-            <p class="lead">みんなが選ぶ人気アニメランキング</p>
+            <p class="lead">みんなが選ぶ！東京ディズニーリゾート人気ランキング</p>
         </div>
     </div>
 
     <div class="container">
-        <!-- タブナビゲーション -->
         <ul class="nav nav-pills nav-fill mb-4" id="rankingTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link tab-btn m-1 active" id="overall-tab" data-bs-toggle="pill" data-bs-target="#overall"
-                    type="button" role="tab">
-                    <i class="bi bi-star-fill"></i> 総合<span class="d-none d-lg-inline">ランキング</span>
+                <button class="nav-link tab-btn m-1 active" id="overall-tab" data-bs-toggle="pill" data-bs-target="#overall" type="button" role="tab">
+                    <i class="bi bi-trophy-fill"></i> 総合<span class="d-none d-lg-inline">ランキング</span>
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link tab-btn" id="weekly-tab" data-bs-toggle="pill" data-bs-target="#weekly"
-                    type="button" role="tab">
-                    <i class="bi bi-calendar-week"></i> 週間<span class="d-none d-lg-inline">ランキング</span>
+                <button class="nav-link tab-btn m-1" id="land-tab" data-bs-toggle="pill" data-bs-target="#land" type="button" role="tab">
+                    <i class="bi bi-fort-awesome"></i> ディズニーランド
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link tab-btn" id="monthly-tab" data-bs-toggle="pill" data-bs-target="#monthly"
-                    type="button" role="tab">
-                    <i class="bi bi-calendar-month"></i> 月間<span class="d-none d-lg-inline">ランキング</span>
+                <button class="nav-link tab-btn m-1" id="sea-tab" data-bs-toggle="pill" data-bs-target="#sea" type="button" role="tab">
+                    <i class="bi bi-moisture"></i> ディズニーシー
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link tab-btn" id="seasonal-tab" data-bs-toggle="pill" data-bs-target="#seasonal"
-                    type="button" role="tab">
-                    <i class="bi bi-calendar3"></i> 今期<spna class="d-none d-lg-inline">ランキング</spna>
+                <button class="nav-link tab-btn m-1" id="seasonal-tab" data-bs-toggle="pill" data-bs-target="#seasonal" type="button" role="tab">
+                    <i class="bi bi-calendar-heart"></i> 期間限定<span class="d-none d-lg-inline">イベント</span>
                 </button>
             </li>
         </ul>
 
-        <!-- タブコンテンツ -->
         <div class="tab-content" id="rankingTabContent">
-            <!-- 総合ランキング -->
             <div class="tab-pane fade show active" id="overall" role="tabpanel">
-                <!-- 1位 -->
-                <div class="card ranking-card">
+                
+                <div class="card ranking-card mb-3">
                     <div class="card-body">
                         <div class="ranking-content">
                             <div class="rank-badge rank-1">
                                 1
-                                <i class="bi bi-trophy-fill position-absolute d-none d-md-block"
-                                    style="top: -10px; right: -10px; font-size: 1.5rem;"></i>
+                                <i class="bi bi-stars position-absolute d-none d-md-block" style="top: -10px; right: -10px; font-size: 1.5rem; color: #ffd700;"></i>
                             </div>
-                            <img src="images/最強魔法使いの転生.webp" class="anime-thumbnail" alt="1位">
+                            <img src="images/Beauty_Beast.jpg" class="anime-thumbnail w-25" alt="1位">
                             <div class="ranking-info">
                                 <div class="d-flex gap-2 mb-2 flex-wrap">
-                                    <span class="badge bg-primary">ファンタジー</span>
-                                    <span class="badge bg-success">放送中</span>
-                                    <span class="badge bg-warning text-dark">人気急上昇</span>
+                                    <span class="badge bg-primary">ディズニーランド</span>
+                                    <span class="badge bg-danger">DPA対象</span>
+                                    <span class="badge bg-warning text-dark">圧倒的人気</span>
                                 </div>
-                                <h4 class="ranknig-title">最強魔法使いの転生</h4>
-                                <p class="ranking-description">史上最強の魔法使いが転生して無双する王道ファンタジー</p>
+                                <h4 class="ranking-title">美女と野獣“魔法のものがたり”</h4>
+                                <p class="ranking-description">映画の名シーンを魔法のカップに乗って巡る, 日本オリジナルの大型アトラクション。</p>
                                 <div class="ranking-meta">
                                     <div class="rating-stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
                                         <span class="text-dark ms-1 fw-bold">4.9</span>
                                     </div>
-                                    <span class="text-muted">3,456件のレビュー</span>
+                                    <span class="text-muted">5,890件の口コミ</span>
                                     <span class="trend-up">
-                                        <i class="bi bi-arrow-up-circle-fill"></i> 先週より +2
+                                        <i class="bi bi-arrow-up-circle-fill"></i> 先週より混雑増
                                     </span>
                                 </div>
                             </div>
@@ -382,31 +410,30 @@
                     </div>
                 </div>
 
-                <!-- 2位 -->
-                <div class="card ranking-card">
+                <div class="card ranking-card mb-3">
                     <div class="card-body">
                         <div class="ranking-content">
                             <div class="rank-badge rank-2">2</div>
-                            <img src="images/竜騎士の伝説.webp" class="anime-thumbnail" alt="2位">
+                            <img src="images/Soaring.jpg" class="anime-thumbnail w-25" alt="2位">
                             <div class="ranking-info">
                                 <div class="d-flex gap-2 mb-2 flex-wrap">
-                                    <span class="badge bg-primary">ファンタジー</span>
-                                    <span class="badge bg-success">放送中</span>
+                                    <span class="badge bg-info text-dark">ディズニーシー</span>
+                                    <span class="badge bg-danger">DPA対象</span>
                                 </div>
-                                <h4 class="ranking-title">竜騎士の伝説</h4>
-                                <p class="ranking-description">竜と契約した騎士の壮大な冒険譚</p>
+                                <h4 class="ranking-title">ソアリン：ファンタスティック・フライト</h4>
+                                <p class="ranking-description">ドリームフライヤーに乗って、世界中の名所や大自然を空から旅する感動体験。</p>
                                 <div class="ranking-meta">
                                     <div class="rating-stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1 fw-bold">4.7</span>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-half text-warning"></i>
+                                        <span class="text-dark ms-1 fw-bold">4.8</span>
                                     </div>
-                                    <span class="text-muted">2,890件のレビュー</span>
-                                    <span class="trend-down">
-                                        <i class="bi bi-arrow-down-circle-fill"></i> 先週より -1
+                                    <span class="text-muted">4,320件の口コミ</span>
+                                    <span class="trend-same">
+                                        <i class="bi bi-dash-circle-fill"></i> 変動なし
                                     </span>
                                 </div>
                             </div>
@@ -417,31 +444,30 @@
                     </div>
                 </div>
 
-                <!-- 3位 -->
-                <div class="card ranking-card">
+                <div class="card ranking-card mb-3">
                     <div class="card-body">
                         <div class="ranking-content">
                             <div class="rank-badge rank-3">3</div>
-                            <img src="images/魔法学園の日常.webp" class="anime-thumbnail" alt="3位">
+                            <img src="images/BayMax.jpg" class="anime-thumbnail w-25" alt="3位">
                             <div class="ranking-info">
                                 <div class="d-flex gap-2 mb-2 flex-wrap">
-                                    <span class="badge bg-primary">ファンタジー</span>
-                                    <span class="badge bg-success">放送中</span>
+                                    <span class="badge bg-primary">ディズニーランド</span>
+                                    <span class="badge bg-success">ノリノリBGM</span>
                                 </div>
-                                <h4 class="ranking-title">魔法学園の日常</h4>
-                                <p class="ranking-description">魔法学園での青春ファンタジーコメディ</p>
+                                <h4 class="ranking-title">ベイマックスのハッピーライド</h4>
+                                <p class="ranking-description">軽快な音楽に合わせて予測不能な動きをする、ハッピー度100%のライド！</p>
                                 <div class="ranking-meta">
                                     <div class="rating-stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star text-muted"></i>
                                         <span class="text-dark ms-1 fw-bold">4.6</span>
                                     </div>
-                                    <span class="text-muted">2,345件のレビュー</span>
+                                    <span class="text-muted">3,150件の口コミ</span>
                                     <span class="trend-up">
-                                        <i class="bi bi-arrow-up-circle-fill"></i> 先週より +1
+                                        <i class="bi bi-arrow-up-circle-fill"></i> SNSで話題
                                     </span>
                                 </div>
                             </div>
@@ -452,31 +478,30 @@
                     </div>
                 </div>
 
-                <!-- 4位以降 -->
-                <div class="card ranking-card">
+                <div class="card ranking-card mb-3">
                     <div class="card-body">
                         <div class="ranking-content">
                             <div class="rank-badge rank-other">4</div>
-                            <img src="images/桜色の約束.webp" class="anime-thumbnail" alt="4位">
+                            <img src="images/Tower_of_Terrer.jpg" class="anime-thumbnail w-25" alt="4位">
                             <div class="ranking-info">
                                 <div class="d-flex gap-2 mb-2 flex-wrap">
-                                    <span class="badge bg-danger">恋愛</span>
-                                    <span class="badge bg-success">放送中</span>
+                                    <span class="badge bg-info text-dark">ディズニーシー</span>
+                                    <span class="badge bg-dark">絶叫系</span>
                                 </div>
-                                <h4 class="ranking-title">桜色の約束</h4>
-                                <p class="ranking-description">高校最後の春、幼馴染との約束を胸に青春を駆け抜ける</p>
+                                <h4 class="ranking-title">タワー・オブ・テラー</h4>
+                                <p class="ranking-description">呪われたエレベーターで最上階へ。急降下する恐怖の瞬間がたまらない！</p>
                                 <div class="ranking-meta">
                                     <div class="rating-stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                        <span class="text-dark ms-1 fw-bold">4.8</span>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star text-muted"></i>
+                                        <span class="text-dark ms-1 fw-bold">4.5</span>
                                     </div>
-                                    <span class="text-muted">2,156件のレビュー</span>
-                                    <span class="trend-same">
-                                        <i class="bi bi-dash-circle-fill"></i> 変動なし
+                                    <span class="text-muted">2,880件の口コミ</span>
+                                    <span class="trend-down">
+                                        <i class="bi bi-arrow-down-circle-fill"></i> 先週より減少
                                     </span>
                                 </div>
                             </div>
@@ -487,30 +512,30 @@
                     </div>
                 </div>
 
-                <div class="card ranking-card">
+                <div class="card ranking-card mb-3">
                     <div class="card-body">
                         <div class="ranking-content">
                             <div class="rank-badge rank-other">5</div>
-                            <img src="images/量子戦士クロノス.webp" class="anime-thumbnail" alt="5位">
+                            <img src="images/Pooh's_hummy_hunt.jpg" class="anime-thumbnail w-25" alt="5位">
                             <div class="ranking-info">
                                 <div class="d-flex gap-2 mb-2 flex-wrap">
-                                    <span class="badge bg-info">SF</span>
-                                    <span class="badge bg-success">放送中</span>
+                                    <span class="badge bg-primary">ディズニーランド</span>
+                                    <span class="badge bg-success">ファミリー向け</span>
                                 </div>
-                                <h4 class="ranking-title">量子戦士クロノス</h4>
-                                <p class="ranking-description">時空を超えた戦いに巻き込まれた少年の壮大なSFアクション</p>
+                                <h4 class="ranking-title">プーさんのハニーハント</h4>
+                                <p class="ranking-description">ハニーポットに乗って、プーさんの不思議な夢の世界へ出発。</p>
                                 <div class="ranking-meta">
                                     <div class="rating-stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-dark ms-1 fw-bold">4.2</span>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star text-muted"></i>
+                                        <span class="text-dark ms-1 fw-bold">4.4</span>
                                     </div>
-                                    <span class="text-muted">987件のレビュー</span>
-                                    <span class="trend-down">
-                                        <i class="bi bi-arrow-down-circle-fill"></i> 先週より -2
+                                    <span class="text-muted">2,450件の口コミ</span>
+                                    <span class="trend-same">
+                                        <i class="bi bi-dash-circle-fill"></i> 安定
                                     </span>
                                 </div>
                             </div>
@@ -521,30 +546,30 @@
                     </div>
                 </div>
 
-                <div class="card ranking-card">
+                <div class="card ranking-card mb-3">
                     <div class="card-body">
                         <div class="ranking-content">
                             <div class="rank-badge rank-other">6</div>
-                            <img src="images/近未来探偵ネオ.webp" class="anime-thumbnail" alt="6位">
+                            <img src="images/indy_jouns.jpg" class="anime-thumbnail w-25" alt="6位">
                             <div class="ranking-info">
                                 <div class="d-flex gap-2 mb-2 flex-wrap">
-                                    <span class="badge bg-info">SF</span>
-                                    <span class="badge bg-success">放送中</span>
+                                    <span class="badge bg-info text-dark">ディズニーシー</span>
+                                    <span class="badge bg-dark">冒険</span>
                                 </div>
-                                <h4 class="ranking-title">未来探偵ネオ</h4>
-                                <p class="ranking-description">近未来を舞台に、AIと人間が協力して事件を解決するSFミステリー</p>
+                                <h4 class="ranking-title">インディ・ジョーンズ®・アドベンチャー</h4>
+                                <p class="ranking-description">オフロード車で猛スピードを駆け抜け、クリスタルスカルの呪いから脱出せよ！</p>
                                 <div class="ranking-meta">
                                     <div class="rating-stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-dark ms-1 fw-bold">4.4</span>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star text-muted"></i>
+                                        <span class="text-dark ms-1 fw-bold">4.3</span>
                                     </div>
-                                    <span class="text-muted">1,987件のレビュー</span>
+                                    <span class="text-muted">1,980件の口コミ</span>
                                     <span class="trend-up">
-                                        <i class="bi bi-arrow-up-circle-fill"></i> 先週より +3
+                                        <i class="bi bi-arrow-up-circle-fill"></i> 学生に人気
                                     </span>
                                 </div>
                             </div>
@@ -555,30 +580,30 @@
                     </div>
                 </div>
 
-                <div class="card ranking-card">
+                <div class="card ranking-card mb-3">
                     <div class="card-body">
                         <div class="ranking-content">
                             <div class="rank-badge rank-other">7</div>
-                            <img src="images/都市伝説探偵.webp" class="anime-thumbnail" alt="7位">
+                            <img src="images/Sprush_mountain.jpg" class="anime-thumbnail w-25" alt="7位">
                             <div class="ranking-info">
                                 <div class="d-flex gap-2 mb-2 flex-wrap">
-                                    <span class="badge bg-dark">ホラー</span>
-                                    <span class="badge bg-success">放送中</span>
+                                    <span class="badge bg-primary">ディズニーランド</span>
+                                    <span class="badge bg-info">夏にオススメ</span>
                                 </div>
-                                <h4 class="ranking-title">都市伝説探偵</h4>
-                                <p class="ranking-description">現代に蘇る都市伝説の謎を解き明かす学園ホラーミステリー</p>
+                                <h4 class="ranking-title">スプラッシュ・マウンテン</h4>
+                                <p class="ranking-description">丸太ボートで愉快な世界を旅した後は、落差16mの滝つぼへダイブ！</p>
                                 <div class="ranking-meta">
                                     <div class="rating-stars">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star"></i>
-                                        <span class="text-dark ms-1 fw-bold">4.3</span>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star text-muted"></i>
+                                        <span class="text-dark ms-1 fw-bold">4.2</span>
                                     </div>
-                                    <span class="text-muted">1,567件のレビュー</span>
-                                    <span class="trend-same">
-                                        <i class="bi bi-dash-circle-fill"></i> 変動なし
+                                    <span class="text-muted">1,500件の口コミ</span>
+                                    <span class="trend-down">
+                                        <i class="bi bi-arrow-down-circle-fill"></i> 休止明け
                                     </span>
                                 </div>
                             </div>
@@ -589,7 +614,6 @@
                     </div>
                 </div>
 
-                <!-- ページネーション -->
                 <nav aria-label="ランキングページネーション" class="mt-4">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
@@ -598,8 +622,6 @@
                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
                         <li class="page-item">
                             <a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a>
                         </li>
@@ -607,25 +629,24 @@
                 </nav>
             </div>
 
-            <!-- 週間・月間・今期ランキングは同様の構造 -->
-            <div class="tab-pane fade" id="weekly" role="tabpanel">
+            <div class="tab-pane fade" id="land" role="tabpanel">
                 <div class="text-center py-5">
-                    <h4>週間ランキングの内容がここに表示されます</h4>
-                    <p class="text-muted">（総合ランキングと同様の構造）</p>
+                    <h4>東京ディズニーランド限定ランキング</h4>
+                    <p class="text-muted">（美女と野獣、ベイマックス、スペースマウンテンなど）</p>
                 </div>
             </div>
 
-            <div class="tab-pane fade" id="monthly" role="tabpanel">
+            <div class="tab-pane fade" id="sea" role="tabpanel">
                 <div class="text-center py-5">
-                    <h4>月間ランキングの内容がここに表示されます</h4>
-                    <p class="text-muted">（総合ランキングと同様の構造）</p>
+                    <h4>東京ディズニーシー限定ランキング</h4>
+                    <p class="text-muted">（ソアリン、トイ・ストーリー・マニア！、センター・オブ・ジ・アースなど）</p>
                 </div>
             </div>
 
             <div class="tab-pane fade" id="seasonal" role="tabpanel">
                 <div class="text-center py-5">
-                    <h4>今期ランキングの内容がここに表示されます</h4>
-                    <p class="text-muted">（総合ランキングと同様の構造）</p>
+                    <h4>期間限定イベント・パレード</h4>
+                    <p class="text-muted">季節ごとの特別ショーやグリーティングの情報を表示します。</p>
                 </div>
             </div>
         </div>
@@ -637,8 +658,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-3">
-                    <h5 class="fw-bold mb-3"><i class="bi bi-film"></i> AniListo</h5>
-                    <p class="text-light">あなたの好きなアニメを見つけて、共有しよう。</p>
+                    <h5 class="fw-bold mb-3"><i class="bi bi-stars"></i> 夢がかなう場所</h5>
+                    <p class="text-light">東京ディズニーリゾート</p>
                 </div>
                 <div class="col-md-2 mb-3">
                     <h6 class="fw-bold mb-3">サイト情報</h6>
@@ -667,7 +688,7 @@
                 </div>
             </div>
             <hr class="border-light">
-            <p class="text-center text-light mb-0">&copy; 2025 AniListo. All rights reserved.</p>
+            <p class="text-center text-light mb-0">&copy; 2025 TokyoDisneyResort. All rights reserved.</p>
         </div>
     </footer>
     <button id="backToTopBtn" class="btn shadow d-flex align-items-center justify-content-center">
