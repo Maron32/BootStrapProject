@@ -155,134 +155,112 @@
         <!-- 人気ランキング -->
         <section class="mb-5">
             <div class="container">
-                <!-- タブナビゲーション -->
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h2 class="fw-bold">
                         <i class="bi bi-trophy-fill text-warning"></i> 人気アトラクションランキング
                     </h2>
                     <ul class="nav nav-pills" id="rankingTabTop" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="weeklyTabTop" data-bs-toggle="pill"
-                                data-bs-target="#weeklyTop" type="button" role="tab">
-                                TDL
-                            </button>
+                            <button class="nav-link active" id="weeklyTabTop" data-bs-toggle="pill" data-bs-target="#weeklyTop" type="button" role="tab">TDL</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="monthlyTabTop" data-bs-toggle="pill"
-                                data-bs-target="#monthlyTop" type="button" role="tab">
-                                TDS
-                            </button>
+                            <button class="nav-link" id="monthlyTabTop" data-bs-toggle="pill" data-bs-target="#monthlyTop" type="button" role="tab">TDS</button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="seasonalTabTop" data-bs-toggle="pill"
-                                data-bs-target="#seasonalTop" type="button" role="tab">
-                                全体
-                            </button>
+                            <button class="nav-link" id="seasonalTabTop" data-bs-toggle="pill" data-bs-target="#seasonalTop" type="button" role="tab">全体</button>
                         </li>
                     </ul>
                 </div>
 
-                <!-- タブコンテンツ -->
                 <div class="tab-content" id="rankingTabContent">
-                    <!-- 総合ランキング -->
                     <div class="tab-pane fade show active" id="weeklyTop" role="tabpanel">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="card ranking-card">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-2 text-center">
-                                                <div class="ranking-number">1</div>
-                                            </div>
-                                            <div class="col-3">
-                                                <img src="images/Beauty_Beast.jpg" class="img-fluid rounded" alt="1位">
-                                            </div>
-                                            <div class="col-7">
-                                                <span class="badge bg-warning text-dark mb-2">1位</span>
-                                                <h5 class="fw-bold mb-2 card-title-nowrap">美女と野獣"魔法のものがたり"</h5>
-                                                <p class="text-muted small mb-2 text-clamp-2">踊るように動く魔法のカップが導く、真実の愛のものがたり</p>
-                                            </div>
+                        <div class="list-group shadow-sm">
+                            
+                            <div class="list-group-item list-group-item-action py-3">
+                                <div class="row align-items-center">
+                                    <div class="col-1 col-md-1 text-center">
+                                        <span class="h4 fw-bold text-warning">1</span>
+                                    </div>
+                                    <div class="col-3 col-md-2">
+                                        <img src="images/Beauty_Beast.jpg" class="img-fluid rounded shadow-sm w-" alt="1位" style="aspect-ratio: 1/1; object-fit: cover;">
+                                    </div>
+                                    <div class="col-8 col-md-9">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <span class="badge bg-warning text-dark">1位</span>
+                                            <h5 class="fw-bold mb-0">美女と野獣"魔法のものがたり"</h5>
                                         </div>
+                                        <p class="text-muted small mb-0 d-none d-md-block">踊るように動く魔法のカップが導く、真実の愛のものがたり</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="card ranking-card">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-2 text-center">
-                                                <div class="ranking-number">2</div>
-                                            </div>
-                                            <div class="col-3">
-                                                <img src="images/BayMax.jpg" class="img-fluid rounded" alt="2位">
-                                            </div>
-                                            <div class="col-7">
-                                                <span class="badge bg-secondary mb-2">2位</span>
-                                                <h5 class="fw-bold mb-2 card-title-nowrap">ベイマックスのハッピーランド</h5>
-                                                <p class="text-muted small mb-2 text-clamp-2">ケア・ロボットが引っ張るビークルに乗って、予測不能な動きを楽しもう！</p>
-        
-                                            </div>
+                            <div class="list-group-item list-group-item-action py-3">
+                                <div class="row align-items-center">
+                                    <div class="col-1 col-md-1 text-center">
+                                        <span class="h4 fw-bold text-secondary">2</span>
+                                    </div>
+                                    <div class="col-3 col-md-2">
+                                        <img src="images/BayMax.jpg" class="img-fluid rounded shadow-sm" alt="2位" style="aspect-ratio: 1/1; object-fit: cover;">
+                                    </div>
+                                    <div class="col-8 col-md-9">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <span class="badge bg-secondary">2位</span>
+                                            <h5 class="fw-bold mb-0">ベイマックスのハッピーライド</h5>
                                         </div>
+                                        <p class="text-muted small mb-0 d-none d-md-block">ケア・ロボットが引っ張るビークルに乗って、予測不能な動きを楽しもう！</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="card ranking-card">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-2 text-center">
-                                                <div class="ranking-number">3</div>
-                                            </div>
-                                            <div class="col-3">
-                                                <img src="images/Big_sunder.jpg" class="img-fluid rounded" alt="3位">
-                                            </div>
-                                            <div class="col-7">
-                                                <span class="badge bg-secondary mb-2">3位</span>
-                                                <h5 class="fw-bold mb-2 card-title-nowrap">ビッグサンダーマウンテン</h5>
-                                                <p class="text-muted small mb-2 text-clamp-2">鉱山列車が、荒野を急旋回、急降下しながら大爆走！</p>
-                                            
-                                            </div>
+                            <div class="list-group-item list-group-item-action py-3">
+                                <div class="row align-items-center">
+                                    <div class="col-1 col-md-1 text-center">
+                                        <span class="h4 fw-bold" style="color: #cd7f32;">3</span>
+                                    </div>
+                                    <div class="col-3 col-md-2">
+                                        <img src="images/Big_sunder.jpg" class="img-fluid rounded shadow-sm" alt="3位" style="aspect-ratio: 1/1; object-fit: cover;">
+                                    </div>
+                                    <div class="col-8 col-md-9">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <span class="badge bg-secondary">3位</span>
+                                            <h5 class="fw-bold mb-0">ビッグサンダー・マウンテン</h5>
                                         </div>
+                                        <p class="text-muted small mb-0 d-none d-md-block">鉱山列車が、荒野を急旋回、急降下しながら大爆走！</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="card ranking-card">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-2 text-center">
-                                                <div class="ranking-number">4</div>
-                                            </div>
-                                            <div class="col-3">
-                                                <img src="images/Monsters_ink.jpg" class="img-fluid rounded" alt="4位">
-                                            </div>
-                                            <div class="col-7">
-                                                <span class="badge bg-secondary mb-2">4位</span>
-                                                <h5 class="fw-bold mb-2 card-title-nowrap">モンスターズ・インク"ライド＆ゴーシーク！"</h5>
-                                                <p class="text-muted small mb-2 text-clamp-2">トラムに乗って、フラッシュライトでゆかいなモンスターたちを見つけよう！</p>
-                                        
-                                            </div>
+                            <div class="list-group-item list-group-item-action py-3">
+                                <div class="row align-items-center">
+                                    <div class="col-1 col-md-1 text-center">
+                                        <span class="h4 fw-bold text-muted">4</span>
+                                    </div>
+                                    <div class="col-3 col-md-2">
+                                        <img src="images/Monsters_ink.jpg" class="img-fluid rounded shadow-sm" alt="4位" style="aspect-ratio: 1/1; object-fit: cover;">
+                                    </div>
+                                    <div class="col-8 col-md-9">
+                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                            <span class="badge bg-light text-dark border">4位</span>
+                                            <h5 class="fw-bold mb-0">モンスターズ・インク"ライド＆ゴーシーク！"</h5>
                                         </div>
+                                        <p class="text-muted small mb-0 d-none d-md-block">トラムに乗って、フラッシュライトでゆかいなモンスターたちを見つけよう！</p>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
                     <div class="tab-pane fade" id="monthlyTop" role="tabpanel">
-                        <div class="text-center py-5">
-                            <h4>月間ランキングの内容がここに表示されます</h4>
-                            <p class="text-muted">（週間ランキングと同様の構造）</p>
+                        <div class="text-center py-5 border rounded bg-light">
+                            <h4>東京ディズニーシーのランキング</h4>
+                            <p class="text-muted small">データ取得中...</p>
                         </div>
                     </div>
-
                     <div class="tab-pane fade" id="seasonalTop" role="tabpanel">
-                        <div class="text-center py-5">
-                            <h4>今期ランキングの内容がここに表示されます</h4>
-                            <p class="text-muted">（週間ランキングと同様の構造）</p>
+                        <div class="text-center py-5 border rounded bg-light">
+                            <h4>リゾート全体のランキング</h4>
+                            <p class="text-muted small">データ取得中...</p>
                         </div>
                     </div>
                 </div>
